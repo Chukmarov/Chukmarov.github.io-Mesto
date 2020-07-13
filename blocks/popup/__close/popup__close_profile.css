@@ -1,0 +1,8 @@
+.popup__close_profile {
+    width: 26px;
+    position: absolute;
+    top: -26px;
+    right: -26px;
+    cursor: pointer;
+  }
+  
