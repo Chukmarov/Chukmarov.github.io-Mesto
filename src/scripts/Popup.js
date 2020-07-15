@@ -1,4 +1,4 @@
-class Popup{
+export class Popup{
     constructor(popupButtonAdd,popupProfile,popupPlace,popupImage){
         this.popupButtonAdd=popupButtonAdd;
         this.popupProfile=popupProfile;

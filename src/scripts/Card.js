@@ -1,4 +1,4 @@
-class Card {
+export class Card {
   constructor(obj,placesList,popupPictureTag,popupImage,userOwnerId, baseUrl, key) {
     this.name = obj.name;
     this.link = obj.link;

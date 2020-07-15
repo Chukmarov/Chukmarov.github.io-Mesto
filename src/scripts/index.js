@@ -1,5 +1,12 @@
 'use strict'
-const programm = function () {
+ import {Api} from './Api.js';
+ import {Card} from './Card.js';
+ import {CardList} from './CardList.js';
+ import {FormValidator} from './FormValidator.js';
+ import {Popup} from './Popup.js';
+ import {UserInfo} from './UserInfo.js';
+ import '../pages/index.css';
+
   const popupButtonOpen = document.querySelector('.user-info__button_add');
   const popupProfileButtonOpen = document.querySelector('.user-info__button_edit');
   const popupPlace = document.querySelector('.popup_place');
@@ -170,8 +177,7 @@ const programm = function () {
   placeFormValidator.setEventListeners();
   profileFormValidator.setEventListeners();
 
-}
-programm();
+
 
 /*
 	Неплохая работа, данные с сервера приходят и профиль редактируется, но по организации
