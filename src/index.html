@@ -19,7 +19,7 @@
 
   <div class="root">
     <header class="header root__section">
-      <img src="./images/logo.svg" alt="mesto logo" class="logo">
+      <img src="<%=require('./images/logo.svg')%>" alt="mesto logo" class="logo">
     </header>
 
     <div class="profile root__section">
@@ -42,7 +42,7 @@
 
     <div class="popup popup_place">
       <div class="popup__content">
-        <img src="./images/close.svg" alt="" class="popup__close_new">
+        <img src="<%=require('./images/close.svg')%>" alt="" class="popup__close_new">
         <h3 class="popup__title">Новое место</h3>
         <form class="popup__form popup__form_new" name="new" novalidate>
             <input id="popup__input_type_place-name-id" type="text" required name="name" class="popup__input popup__input_type_place-name" placeholder="Название"  minlength="2" maxlength="30" >
@@ -56,7 +56,7 @@
 
     <div class="popup popup_profile">
       <div class="popup__content">
-        <img src="./images/close.svg" alt="" class="popup__close_profile">
+        <img src="<%=require('./images/close.svg')%>" alt="" class="popup__close_profile">
         <h3 class="popup__title">Редактировать профиль</h3>
         <form class="popup__form popup__form_edit" name="edit" novalidate>
             <input id="popup__input_type_user-name-id" type="text" required name="user_name" class="popup__input popup__input_type_user-name" placeholder="Имя" autocomplete="off" minlength="2" maxlength="30">
@@ -70,7 +70,7 @@
 
     <div class="popup popup_image">
       <div class="popup__picture">
-        <img src="./images/close.svg" alt="" class="popup__close_image">
+        <img src="<%=require('./images/close.svg')%>" alt="" class="popup__close_image">
         <img class ="popup__image" alt="">
     </div>
 

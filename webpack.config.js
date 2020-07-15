@@ -34,8 +34,14 @@ module.exports = {
             },
 
             {
-            test: /\.(img|jpg|jpeg|png|svg|webp)/,
-            use:'file-loader?name=/images/[name].[ext]'
+            test: /\.(png|jpe?g|gif|svg|webp)$/i,
+            use: {
+                loader: 'file-loader',
+                options: {
+                name: './images/[name].[ext]',
+                        esModule: false //вот оно
+                }
+            }
             }
         ]
     },
