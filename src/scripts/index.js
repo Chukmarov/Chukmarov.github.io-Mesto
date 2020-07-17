@@ -28,7 +28,8 @@
   const popupButtonPlus = document.querySelector('.popup__button_plus');
   const userNameValue = document.edit.user_name;
   const userJobValue = document.edit.user_job;
-  const baseUrl = 'https://praktikum.tk/cohort11';
+  const API_URL = NODE_ENV === 'production' ? 'https://praktikum.tk' : 'http://praktikum.tk';
+  const baseUrl = `${API_URL}/cohort11`;
   const key = '676464ed-c1f0-4171-a190-0999982bcdd0';
 
   const cardListCreate = new CardList(placesList);
@@ -129,34 +130,6 @@
 
   });
 
-/*
-  Надо исправить: т.к. теперь в программе реализовано отображение карточки в зависимости от id 
-  пользователя необходимо убедится, что карточки отрисовываются только после того, как сервер
-  ответил на запрос о данных пользователя
-
-  Что бы реализовать это нужно воспользоваться Promise.all
-  https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Promise/all
-
-  Выглядит этот код примерно так:
-    Promise.all([     //в Promise.all передаем массив промисов которые нужно выполнить
-      this.api.takeInfoFromServer(),
-      this.api.cardListGet()
-    ])    
-      .then((values)=>{    //попадаем сюда когда оба промиса будут выполнены
-        const [userData, initialCards] = values;
-        ......................  //все данные получены, отрисовываем страницу
-        userInfoClass.updateUserInfo(userData, finderUserName, finderUserJob);
-        userInfoClass.updateUserAvatar(userData, finderUserPhoto);
-        userInfoClass.setUserInfo(userData);
-        cardListCreate.render(res, initialCards);
-      })
-      .catch((err)=>{     //попадаем сюда если один из промисов завершаться ошибкой
-        console.log(err);
-      })
-
-      Готово! Крутая штука, спасибо!)
-*/
-
     Promise.all([
       apiManipulation.takeInfoFromServer(),
       apiManipulation.cardListGet()
@@ -177,43 +150,3 @@
   placeFormValidator.setEventListeners();
   profileFormValidator.setEventListeners();
 
-
-
-/*
-	Неплохая работа, данные с сервера приходят и профиль редактируется, но по организации
-	обмена с сервером есть несколько замечаний:
-	
-	Надо исправить:
-  - передавать базовый адрес сервера и ключ авторизации как параметры конструктора класса Api
-  - Готово
-  - кроме преобразования из json нужна так же проверка res.ok, что запрос выполнился успешно
-  - Готово
-  - у всех запросов должна быть обработка ошибок, она должна быть в самом конце, а не в методе класса Api
-  - Готово
-  - попап закрывать только если сервер ответил подтверждением
-  - Готово
-	
-  Можно лучше:
-  - в некоторых местах есть замечания по форматированию кода - проблемы с отступами.
-  Об оформлении кода можно почитать здесь https://learn.javascript.ru/coding-style
-  Практически все современные редакторы умеют автоматически форматировать код. 
-  Постарайтесь настроить его, это сильно экономит время, а Ваш код будет всегда красив.
-  Одно из наиболее популярных дополнений для форматирования кода - Prettier (https://prettier.io/)
-  - Готово , я вроде использова Beautify, может он немного не так отрабатывает как надо(((
-*/
-
-/*
-  Все замечания исправлены, но в связи с добавлением нового функционала появилось несколько
-  мест которые необходимо поправить:
-
-  Надо исправить:
-  - класс Api не должен взаимодействовать с DOM,  только отправлять запрос и возвращать данные
-  Менять текст кнопки обратно нужно в блоке finally
-  - Готово.
-
-  - для запроса начальных данных при отрисовки страницы необходимо убедиться, что
-  получен ответ на оба запроса - данных пользователя и карточек, и только после этого вызывать отрисовку
-  карточек на странице. Реализуется это с помощью Promise.all
-  -Готово.
-
-*/

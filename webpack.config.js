@@ -36,24 +36,24 @@ module.exports = {
             },
 
             {
-            test: /\.(woff|woff2|ttf)$/,
-            use:{
-                loader: 'file-loader',
-                    options: {
-                        name:'./fonts/[name].[ext]'
-                    },
-                } 
+                test: /\.(woff|woff2|ttf)$/,
+                use:{
+                    loader: 'file-loader',
+                        options: {
+                            name:'./fonts/[name].[ext]'
+                        },
+                    } 
             },
 
             {
-            test: /\.(png|jpe?g|gif|svg|webp|ico)$/i,
-            use: {
-                loader: 'file-loader',
-                options: {
-                name: './images/[name].[ext]',
-                        esModule: false //вот оно
+                test: /\.(png|jpe?g|gif|svg|webp|ico)$/i,
+                use: {
+                    loader: 'file-loader',
+                    options: {
+                    name: './images/[name].[ext]',
+                    esModule: false,
+                    }
                 }
-            }
             }
         ]
     },
