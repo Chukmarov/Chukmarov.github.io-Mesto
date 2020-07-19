@@ -1,4 +1,4 @@
-class Api {
+export class Api {
   constructor(baseUrl, key){
     this.baseUrl = baseUrl;
     this.key = key;
@@ -48,28 +48,7 @@ class Api {
         })
       })
       .then((res) => {
-        /*
-          Надо исправить: класс Api не должен взаимодействовать с DOM
-          т.к. его методы могут использоваться в разных частях программы
-          и не везде может быть необходимость задания текста для кнопки
 
-          Возвращать текст кнопки нужно в блоке finally
-          https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Promise/finally
-
-          api.pushUserInfoToServer(data)
-            .then(() => {
-                //сюда попадаем если запрос выполнился успешно
-            })
-            .catch(() => {
-                //сюда попадаем если была ошибка
-            })
-            .finally(() => {
-              //сюда попадаем в любом случае, менять текст кнопки обратно нужно здесь
-            })
-        
-            Готово
-
-        */
 
         return this.apiErrorReturn(res);
       })
@@ -89,12 +68,6 @@ class Api {
         })
       })
       .then((res) => {
-        /*
-          Надо исправить: аналогично замечанию выше класс Api не должен взаимодействовать с DOM
-          только отправлять запрос и возвращать данные
-
-          Готово
-        */
 
         return this.apiErrorReturn(res)
       })

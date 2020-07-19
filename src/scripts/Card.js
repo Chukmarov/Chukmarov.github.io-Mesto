@@ -1,4 +1,4 @@
-class Card {
+export class Card {
   constructor(obj,placesList,popupPictureTag,popupImage,userOwnerId, baseUrl, key) {
     this.name = obj.name;
     this.link = obj.link;
@@ -22,7 +22,7 @@ class Card {
       event.target.classList.toggle('place-card__like-icon_liked');
       if (event.target.classList.contains('place-card__like-icon_liked')) {
         likePutFunc(event, this.baseUrl, this.key)
-           /* Можно лучше: оставить эту обработку в классе Api, а не выносить сюда */
+
           .then(res => apiErrorReturn(res))
           .then((res) => {
             event.target.nextElementSibling.textContent = res.likes.length;
@@ -34,7 +34,7 @@ class Card {
           })
       } else {
         likeDeleteFunc(event, this.baseUrl, this.key)
-         /* Можно лучше: оставить эту обработку в классе Api, а не выносить сюда */
+
           .then(res => apiErrorReturn(res))
           .then((res) => {
             event.target.nextElementSibling.textContent = res.likes.length;
@@ -53,7 +53,7 @@ class Card {
       if (event.target.classList.contains('place-card__delete-icon')) {
         if (window.confirm("Вы действительно хотите удалить эту карточку?")) {
           deleteFromServerFunction(event, this.baseUrl, this.key)
-           /* Можно лучше: оставить эту обработку в классе Api, а не выносить сюда */
+
             .then(res => apiErrorReturn(res))
             .then(() => {
               this.placesList.removeChild(event.target.closest('.place-card'))
